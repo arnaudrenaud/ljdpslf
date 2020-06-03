@@ -6,9 +6,10 @@ import {
   passTurnToGuess,
   setPhraseAsGuessedForCurrentPlayer,
 } from '../../../lib/api/database/games';
-import { getGameForPlayer, getGame } from '../../../lib/helpers/games';
-import { PATCH_GAME_ACTION } from '../../../lib/pages/api/games';
 import { sendResponse } from '../../../lib/api/http/utils';
+import { getGame } from '../../../lib/api/helpers/games';
+import { getGameForPlayer } from '../../../lib/helpers/games';
+import { PATCH_GAME_ACTION } from '../../../lib/pages/api/games';
 
 export default async (
   req: NowRequest,
