@@ -55,7 +55,19 @@ const PlayersWithPhrases = ({
                         Je n’ai pas deviné
                       </Button>
                     )}
-                    <Button onClick={setPhraseAsGuessed}>J’ai deviné</Button>
+                    <Button
+                      onClick={(): void => {
+                        if (
+                          confirm(
+                            'Votre post-it vous sera révélé si vous confirmez.'
+                          )
+                        ) {
+                          setPhraseAsGuessed();
+                        }
+                      }}
+                    >
+                      J’ai deviné
+                    </Button>
                   </>
                 )}
               </div>
