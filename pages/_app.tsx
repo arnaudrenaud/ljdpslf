@@ -1,10 +1,12 @@
 import App, { AppInitialProps } from 'next/app';
 import Head from 'next/head';
+import Router from 'next/router';
 import { setCookie, parseCookies } from 'nookies';
 import { v4 as uuidv4 } from 'uuid';
 import * as Sentry from '@sentry/browser';
 
 import AppLogo from '../lib/pages/components/_app/AppLogo';
+import { trackPageView } from '../lib/pages/utils/browser';
 
 Sentry.init({
   dsn: process.env.sentryDsn,
@@ -41,6 +43,12 @@ class CustomApp extends App {
     });
 
     super.componentDidCatch(error, errorInfo);
+  }
+
+  componentDidMount(): void {
+    Router.events.on('routeChangeComplete', (url) => {
+      trackPageView(url);
+    });
   }
 
   render(): JSX.Element {
