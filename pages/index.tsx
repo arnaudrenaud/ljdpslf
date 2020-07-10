@@ -1,5 +1,6 @@
 import { useRouter } from 'next/router';
 import { useState } from 'react';
+import lodash from 'lodash';
 
 import { createGame as _createGame } from '../lib/pages/api/games';
 import Button from '../lib/pages/components/global/Button';
@@ -29,7 +30,7 @@ const Home = (): JSX.Element => {
 
   return (
     <Button onClick={createGame} isLoading={isLoading}>
-      Créer une nouvelle partie
+      {lodash.upperCase('Créer une nouvelle partie')}
     </Button>
   );
 };
